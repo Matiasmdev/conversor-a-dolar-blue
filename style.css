@@ -22,6 +22,7 @@ header {
 h1 {
   margin: 0;
   font-size: 20px;
+  /* Estilos base para mobile */
 }
 
 .hamburger {
@@ -92,7 +93,7 @@ input {
   background: #2c2c2c;
   color: #fff;
   /* padding extra a la derecha para personalizar */
-  width: calc(100% - 15px); /* Mismo espacio que el lado izquierdo */
+  width: calc(100% - 25px); /* Mismo espacio que el lado izquierdo */
   padding-right: 15px; /
 }
 
@@ -127,6 +128,21 @@ footer {
   -webkit-text-fill-color: transparent;
   font-weight: bold;
   text-decoration: none;
+}
+/* Solo para desktop (1024px en adelante) - Centra h1 y mantiene hamburger a la derecha */
+/* Solo para desktop (1024px en adelante) - Centra h1 perfectamente y mantiene hamburger a la derecha */
+@media (min-width: 1024px) {
+  header {
+    position: relative;
+    justify-content: flex-end; /* Empuja el hamburger a la derecha */
+  }
+  
+  h1 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Centra perfectamente */
+  }
 }
 
 @media (max-width: 600px) {
