@@ -131,7 +131,12 @@ footer {
 
 @media (max-width: 600px) {
   h1 {
-    font-size: 18px;
+    font-size: 25px;
+  }
+  h2 {
+    font-size: 22px;
+  }
+  header {
   }
   .converter {
     max-width: 100%;
