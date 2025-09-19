@@ -1,49 +1,98 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
   background: #121212;
   color: #eee;
-}
-
-.container {
-  max-width: 800px;
-  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between; /* distribuir espacio entre elementos */
+  align-items: center;
+  padding: 10px 15px;
+  background: #1e1e1e;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 h1 {
-  text-align: center;
+  margin: 0;
+  font-size: 20px;
+}
+
+.hamburger {
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.sidebar {
+  position: fixed;
+  right: -220px;
+  top: 0;
+  height: 100%;
+  width: 220px;
+  background: #1e1e1e;
+  padding-top: 60px;
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+.sidebar.open {
+  right: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+}
+
+.container {
+  flex: 1;
+  padding: 20px;
 }
 
 .converter {
   background: #1e1e1e;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  margin: auto;
+  max-width: 500px;
 }
 
-h2 {
-  margin-bottom: 15px;
-}
-
-input, button {
+input,
+button {
   width: 100%;
   padding: 10px;
   margin: 6px 0;
   border-radius: 6px;
   border: none;
   font-size: 16px;
-  box-sizing: border-box;
 }
 
 input {
   background: #2c2c2c;
   color: #fff;
+  /* padding extra a la derecha para personalizar */
+  padding-right: 200px; /* <-- aquí podés modificar el espacio del borde derecho */
 }
 
 button {
@@ -56,55 +105,39 @@ button:hover {
   background: #0056b3;
 }
 
-p {
-  margin-top: 8px;
+.section {
+  display: none;
 }
 
-#toggle-dark {
-  width: 150px;
-  align-self: center;
-  margin-bottom: 10px;
-  background: #444;
+.section.active {
+  display: block;
 }
 
-.light-mode {
-  background: #f0f4f8;
-  color: #000;
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #1e1e1e;
 }
 
-.light-mode .converter {
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+.matias-link {
+  background: linear-gradient(to right, #007bff, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-.light-mode input {
-  background: #fff;
-  color: #000;
-}
-
-/* === Responsive para mobile === */
 @media (max-width: 600px) {
-  body {
-    padding: 10px;
-  }
-
-  .container {
-    gap: 20px;
-  }
-
-  .converter {
-    padding: 15px;
-  }
-
   h1 {
-    font-size: 22px;
-  }
-
-  h2 {
     font-size: 18px;
   }
-
-  input, button {
+  .converter {
+    max-width: 100%;
+    padding: 15px;
+  }
+  input,
+  button {
     font-size: 14px;
     padding: 8px;
   }

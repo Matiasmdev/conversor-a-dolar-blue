@@ -2,15 +2,29 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Conversor de Monedas</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-mode">
-  <div class="container">
+  <header>
     <h1>Conversor de Monedas</h1>
-    <button id="toggle-dark">Cambiar modo</button>
+    <div class="header-actions">
+      <button id="menu-toggle" class="hamburger">☰</button>
+    </div>
+  </header>
 
-    <div class="converter">
+  <nav id="sidebar" class="sidebar">
+    <ul>
+      <li><a href="#" onclick="mostrarSeccion('ars-usd')">Peso ARS ⇄ Dólar Blue</a></li>
+      <li><a href="#" onclick="mostrarSeccion('pen-usd')">Sol PEN ⇄ Dólar</a></li>
+      <li><a href="#" onclick="mostrarSeccion('pen-ars')">Sol PEN ⇄ Peso ARS</a></li>
+      <li><a href="#" onclick="mostrarSeccion('eur-ars')">Euro ⇄ Peso ARS</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <div id="ars-usd" class="converter section active">
       <h2>Peso Argentino ⇄ Dólar Blue</h2>
       <input type="number" id="peso" placeholder="Monto en ARS">
       <button onclick="convertirAPeso()">ARS → USD</button>
@@ -22,7 +36,7 @@
       <p id="tasa">Obteniendo tasa ARS/USD...</p>
     </div>
 
-    <div class="converter">
+    <div id="pen-usd" class="converter section">
       <h2>Sol Peruano ⇄ Dólar</h2>
       <input type="number" id="sol" placeholder="Monto en PEN">
       <button onclick="convertirASol()">PEN → USD</button>
@@ -34,7 +48,7 @@
       <p id="tasaSol">Obteniendo tasa PEN/USD...</p>
     </div>
 
-    <div class="converter">
+    <div id="pen-ars" class="converter section">
       <h2>Sol Peruano ⇄ Peso Argentino</h2>
       <input type="number" id="solToArs" placeholder="Monto en PEN">
       <button onclick="convertirSolAPeso()">PEN → ARS</button>
@@ -44,7 +58,26 @@
       <button onclick="convertirPesoASol()">ARS → PEN</button>
       <p id="resultadoArsSol"></p>
     </div>
-  </div>
+
+    <div id="eur-ars" class="converter section">
+      <h2>Euro ⇄ Peso Argentino</h2>
+      <input type="number" id="euro" placeholder="Monto en EUR">
+      <button onclick="convertirEuroAPeso()">EUR → ARS</button>
+      <p id="resultadoEuroArs"></p>
+
+      <input type="number" id="arsEuro" placeholder="Monto en ARS">
+      <button onclick="convertirPesoAEuro()">ARS → EUR</button>
+      <p id="resultadoArsEuro"></p>
+      <p id="tasaEuro">Obteniendo tasa EUR/ARS...</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Desarrollado por 
+      <a href="https://matiascoder.com" target="_blank" class="matias-link">MatiasCoder</a>
+    </p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>

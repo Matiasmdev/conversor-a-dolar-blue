@@ -1,5 +1,18 @@
 let tasaDeCambioARS;
 let tasaDeCambioPEN;
+let tasaDeCambioEUR;
+
+// === Mostrar secciones ===
+function mostrarSeccion(id) {
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById('sidebar').classList.remove('open');
+}
+
+// === Menu hamburguesa ===
+document.getElementById('menu-toggle').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.toggle('open');
+});
 
 // === Tasa ARS/USD (dólar blue) ===
 async function obtenerTasaDeCambioARS() {
@@ -14,7 +27,6 @@ async function obtenerTasaDeCambioARS() {
   }
 }
 
-// === Conversiones ARS/USD ===
 function convertirAPeso() {
   const pesos = document.getElementById('peso').value;
   if (!pesos || !tasaDeCambioARS) return alert("Falta dato o tasa");
@@ -42,7 +54,6 @@ async function obtenerTasaDeCambioPEN() {
   }
 }
 
-// === Conversiones PEN/USD ===
 function convertirASol() {
   const soles = document.getElementById('sol').value;
   if (!soles || !tasaDeCambioPEN) return alert("Falta dato o tasa");
@@ -57,7 +68,6 @@ function convertirAUsdDesdeSol() {
   document.getElementById('resultadoUsdSol').innerText = `${usd} USD = ${soles.toFixed(2)} PEN`;
 }
 
-// === Conversiones PEN/ARS usando USD como puente ===
 function convertirSolAPeso() {
   const soles = document.getElementById('solToArs').value;
   if (!soles || !tasaDeCambioPEN || !tasaDeCambioARS) return alert("Falta dato o tasa");
@@ -74,12 +84,34 @@ function convertirPesoASol() {
   document.getElementById('resultadoArsSol').innerText = `${ars} ARS = ${soles.toFixed(2)} PEN`;
 }
 
-// === Modo oscuro ===
-document.getElementById('toggle-dark').addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  document.body.classList.toggle('light-mode');
-});
+// === Euro ARS ===
+async function obtenerTasaDeCambioEUR() {
+  try {
+    const response = await fetch("https://open.er-api.com/v6/latest/ARS");
+    const data = await response.json();
+    tasaDeCambioEUR = 1 / data.rates.EUR;
+    document.getElementById('tasaEuro').innerText =
+      `1 EUR = ${tasaDeCambioEUR.toFixed(2)} ARS`;
+  } catch (e) {
+    document.getElementById('tasaEuro').innerText = 'Error al obtener tasa EUR/ARS';
+  }
+}
+
+function convertirEuroAPeso() {
+  const euros = document.getElementById('euro').value;
+  if (!euros || !tasaDeCambioEUR) return alert("Falta dato o tasa");
+  const ars = euros * tasaDeCambioEUR;
+  document.getElementById('resultadoEuroArs').innerText = `${euros} EUR = ${ars.toFixed(2)} ARS`;
+}
+
+function convertirPesoAEuro() {
+  const ars = document.getElementById('arsEuro').value;
+  if (!ars || !tasaDeCambioEUR) return alert("Falta dato o tasa");
+  const euros = ars / tasaDeCambioEUR;
+  document.getElementById('resultadoArsEuro').innerText = `${ars} ARS = ${euros.toFixed(2)} EUR`;
+}
 
 // Init
 obtenerTasaDeCambioARS();
 obtenerTasaDeCambioPEN();
+obtenerTasaDeCambioEUR();
