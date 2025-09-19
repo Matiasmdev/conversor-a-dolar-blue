@@ -92,7 +92,8 @@ input {
   background: #2c2c2c;
   color: #fff;
   /* padding extra a la derecha para personalizar */
-  padding-right: 200px; /* <-- aquí podés modificar el espacio del borde derecho */
+  width: calc(100% - 15px); /* Mismo espacio que el lado izquierdo */
+  padding-right: 15px; /
 }
 
 button {
