@@ -93,8 +93,8 @@ input {
   background: #2c2c2c;
   color: #fff;
   /* padding extra a la derecha para personalizar */
-  width: calc(100% - 25px); /* Mismo espacio que el lado izquierdo */
-  padding-right: 15px; /
+  width: calc(100% - 15px); /* Mismo espacio que el lado izquierdo */
+  padding-right: 4px; /
 }
 
 button {
