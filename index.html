@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversor de Monedas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+  <div class="container">
+    <h1>Conversor de Monedas</h1>
+    <button id="toggle-dark">Cambiar modo</button>
+
+    <div class="converter">
+      <h2>Peso Argentino ⇄ Dólar Blue</h2>
+      <input type="number" id="peso" placeholder="Monto en ARS">
+      <button onclick="convertirAPeso()">ARS → USD</button>
+      <p id="resultado"></p>
+
+      <input type="number" id="dolar" placeholder="Monto en USD">
+      <button onclick="convertirADolar()">USD → ARS</button>
+      <p id="resultadoDolar"></p>
+      <p id="tasa">Obteniendo tasa ARS/USD...</p>
+    </div>
+
+    <div class="converter">
+      <h2>Sol Peruano ⇄ Dólar</h2>
+      <input type="number" id="sol" placeholder="Monto en PEN">
+      <button onclick="convertirASol()">PEN → USD</button>
+      <p id="resultadoSol"></p>
+
+      <input type="number" id="usdSol" placeholder="Monto en USD">
+      <button onclick="convertirAUsdDesdeSol()">USD → PEN</button>
+      <p id="resultadoUsdSol"></p>
+      <p id="tasaSol">Obteniendo tasa PEN/USD...</p>
+    </div>
+
+    <div class="converter">
+      <h2>Sol Peruano ⇄ Peso Argentino</h2>
+      <input type="number" id="solToArs" placeholder="Monto en PEN">
+      <button onclick="convertirSolAPeso()">PEN → ARS</button>
+      <p id="resultadoSolArs"></p>
+
+      <input type="number" id="arsToSol" placeholder="Monto en ARS">
+      <button onclick="convertirPesoASol()">ARS → PEN</button>
+      <p id="resultadoArsSol"></p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
